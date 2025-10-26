@@ -15,34 +15,6 @@ This project builds a **near-real-time attribution pipeline** on GA4 public e-co
 
 ---
 
-## Folder Structure
-
-ga4_click_attribution/
-├─ dbt_project.yml              # dbt project config
-├─ profiles.yml                 # BigQuery profile for dbt
-├─ README.md                    # Instructions, runbook, assumptions
-├─ worklog.md                   # Daily worklog entries
-├─ stream_demo.py               # Python script for streaming events
-├─ models/
-│   ├─ stg_/
-│   │   └─ stream_events.sql   # Staging GA4 events, incremental load
-│   ├─ int_/
-│   │   └─ int_sessions.sql     # Sessionization, identity resolution
-│   └─ mart_/
-│       ├─ mart_attribution_first.sql  # First-Click attribution
-│       └─ mart_attribution_last.sql   # Last-Click attribution
-├─ macros/
-│   └─ utils.sql                # Helper macros (e.g., COALESCE user_id)
-├─ tests/
-│   ├─ not_null_tests.sql       # Not-null tests for key fields
-│   └─ unique_tests.sql         # Uniqueness tests for event_id
-└─ docs/
-    └─ ga4_fields.md            # Field definitions, GA4 docs
-
-
----
-
-
 
 Installation Instructions
 
