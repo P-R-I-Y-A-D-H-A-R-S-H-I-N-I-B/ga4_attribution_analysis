@@ -75,23 +75,6 @@ Install dbt BigQuery adapter globally or in the same environment:
     pip install dbt-bigquery==1.6.1
 
 
-## Setup & Run
-
-### 1. Configure dbt
-- Edit `profiles.yml` with your **GCP project**, **dataset**, and **service account key**.
-
-## Installation
-
-Create and activate a virtual environment, then install dependencies:
-
-```bash
-python -m venv venv
-source venv/bin/activate   # macOS / Linux
-pip install -r requirements.txt
-pip install dbt-bigquery==1.6.1
-```
-
-
 ## Configuration
 
 1. Set Google Application Credentials to a service account JSON (if using your own GCP):
