@@ -1,0 +1,12 @@
+ga4_click_attribution:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: ga4-attribution-analytics
+      dataset: ga4_attribution
+      keyfile: /Users/priyadharshinib/keys/ga4-attribution-analytics-a8b0cb79da09.json
+      threads: 4
+      timeout_seconds: 300
+      location: US

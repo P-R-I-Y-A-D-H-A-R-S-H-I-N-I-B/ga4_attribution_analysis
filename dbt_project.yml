@@ -1,0 +1,16 @@
+name: 'ga4_click_attribution'
+version: '1.0'
+config-version: 2
+
+profile: 'ga4_click_attribution'
+
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+seed-paths: ["data"]
+snapshot-paths: ["snapshots"]
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_modules"
