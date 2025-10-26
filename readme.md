@@ -1,5 +1,15 @@
 # GA4 Click Attribution Pipeline
 
+## Table of contents
+- Project overview
+- Repo structure
+- Requirements
+- Installation
+- Configuration
+- Run (dbt, demo, dashboard)
+- Notes & troubleshooting
+
+
 ## Project Overview
 
 This project builds a **near-real-time attribution pipeline** on GA4 public e-commerce data using **BigQuery + dbt**, computes **First-Click and Last-Click attribution**, supports **streamed events**, and visualizes results on a **dashboard**.
@@ -13,10 +23,40 @@ This project builds a **near-real-time attribution pipeline** on GA4 public e-co
 - **Identity Resolution:** prefer `user_id`, fallback to `user_pseudo_id`  
 - **Tie-breaker:** use earliest / latest timestamp; deterministic if tied  
 
+
+## Repository structure
+
+Top-level files and folders:
+
+```
+dbt_project.yml         # dbt configuration
+profiles.yml            # local dbt profile (BigQuery credentials and project/dataset)
+readme.md               # this file
+stream_demo.py          # small script that writes synthetic events to the staging table
+dashboard/              # Streamlit demo app
+models/                 # dbt models: stg_, int_, mart_
+macros/                 # dbt macros and helpers
+tests/                  # dbt SQL tests used during development
+docs/                   # supporting documentation (field definitions, notes)
+target/                 # dbt compiled artifacts (ignore for review)
+```
+
+Model layout (dbt):
+- `models/stg_/`: staging models (ingest / normalize GA4 events)
+- `models/int_/`: intermediate models (sessionization, identity resolution)
+- `models/mart_/`: mart models implementing First-Click and Last-Click attribution
+
 ---
 
+## Requirements
 
-Installation Instructions
+- Python 3.10+ (tested with 3.11)
+- `pip` and a virtual environment tool (venv)
+- Google Cloud service account with BigQuery access if you run against your own project
+- dbt-core and `dbt-bigquery` adapter
+
+
+## Installation Instructions
 
 Create a virtual environment (recommended):
 
@@ -44,57 +84,6 @@ Install dbt BigQuery adapter globally or in the same environment:
 A compact demonstration repo implementing a near-real-time GA4 attribution pipeline
 using BigQuery and dbt. It computes First-Click and Last-Click attribution, supports
 streamed events for demonstrations, and includes a small Streamlit dashboard.
-
-Key technologies: BigQuery, dbt, Python, Streamlit
-
-Dataset used for examples: `bigquery-public-data.ga4_obfuscated_sample_ecommerce`
-
-## Table of contents
-- Project overview
-- Repo structure
-- Requirements
-- Installation
-- Configuration
-- Run (dbt, demo, dashboard)
-- Notes & troubleshooting
-
-
-## Project overview
-
-- Attribution methods: First-Click and Last-Click within a configurable lookback window
-- Identity resolution: prefer `user_id`, otherwise `user_pseudo_id`
-- Intended for code demo, hence it is intentionally compact and readable
-
-
-## Repository structure
-
-Top-level files and folders:
-
-```
-dbt_project.yml         # dbt configuration
-profiles.yml            # local dbt profile (BigQuery credentials and project/dataset)
-readme.md               # this file
-stream_demo.py          # small script that writes synthetic events to the staging table
-dashboard/              # Streamlit demo app
-models/                 # dbt models: stg_, int_, mart_
-macros/                 # dbt macros and helpers
-tests/                  # dbt SQL tests used during development
-docs/                   # supporting documentation (field definitions, notes)
-target/                 # dbt compiled artifacts (ignore for review)
-```
-
-Model layout (dbt):
-- `models/stg_/`: staging models (ingest / normalize GA4 events)
-- `models/int_/`: intermediate models (sessionization, identity resolution)
-- `models/mart_/`: mart models implementing First-Click and Last-Click attribution
-
-
-## Requirements
-
-- Python 3.10+ (tested with 3.11)
-- `pip` and a virtual environment tool (venv)
-- Google Cloud service account with BigQuery access if you run against your own project
-- dbt-core and `dbt-bigquery` adapter
 
 
 ## Installation
