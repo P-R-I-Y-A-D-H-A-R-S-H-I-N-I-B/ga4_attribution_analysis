@@ -1,0 +1,15 @@
+# BigQuery client for Python streaming
+google-cloud-bigquery==3.11.2
+
+# Optional: for authentication and service account handling
+google-auth==2.23.0
+google-auth-oauthlib==1.2.0
+
+# Streamlit for dashboard prototype
+streamlit==1.25.0
+
+# Pandas for data processing in streaming or dashboard
+pandas==2.1.0
+
+# dbt BigQuery adapter
+# Install separately: pip install dbt-bigquery
