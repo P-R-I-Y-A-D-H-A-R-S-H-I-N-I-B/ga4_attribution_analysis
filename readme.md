@@ -79,12 +79,6 @@ Install dbt BigQuery adapter globally or in the same environment:
 
 ### 1. Configure dbt
 - Edit `profiles.yml` with your **GCP project**, **dataset**, and **service account key**.
-# GA4 Click Attribution Pipeline
-
-A compact demonstration repo implementing a near-real-time GA4 attribution pipeline
-using BigQuery and dbt. It computes First-Click and Last-Click attribution, supports
-streamed events for demonstrations, and includes a small Streamlit dashboard.
-
 
 ## Installation
 
