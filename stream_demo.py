@@ -1,7 +1,6 @@
-"""Small demo that simulates GA4-like events and streams them to BigQuery.
-
-This file is a demo helper for local development and testing. It
-streams a small number of synthetic events to a staging table.
+"""
+Small demo that simulates GA4-like events and streams them to BigQuery.
+It streams a small number of synthetic events to a streaming table.
 """
 
 import time
@@ -29,11 +28,9 @@ client = bigquery.Client(project=PROJECT_ID)
 table_ref = client.dataset(DATASET_ID).table(TABLE_ID)
 
 
+# Create one synthetic GA4-like event (dict matching BQ schema).
+# Then event id combines a UUID and timestamp to make inserts idempotent.
 def generate_event():
-    """Create one synthetic GA4-like event (dict matching BQ schema).
-
-    The event id combines a UUID and timestamp to make inserts idempotent.
-    """
     event_ts = datetime.utcnow()
     user_id = str(random.randint(1000, 1100))
     user_pseudo_id = str(uuid.uuid4())
@@ -56,8 +53,8 @@ def generate_event():
     }
 
 
+# Insert a single row into BigQuery; print status for visibility
 def stream_event_to_bq(row):
-    """Insert a single row into BigQuery; print status for demo visibility."""
     errors = client.insert_rows_json(table_ref, [row])
     if errors:
         print(f"[ERROR] Failed to insert row: {errors}")

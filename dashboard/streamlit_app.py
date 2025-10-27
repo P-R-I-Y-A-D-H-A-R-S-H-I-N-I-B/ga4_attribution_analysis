@@ -1,8 +1,7 @@
 """
-Streamlit dashboard for GA4 Click Attribution.
-
-      Displays first/last attribution totals, a time series, top channels, and recent streamed events. 
-      Queries BigQuery for materialized mart tables and a small streaming staging table.
+Streamlit dashboard for GA4 Click Attribution:
+    Displays first/last attribution totals, a time series, top channels, and recent streamed events. 
+    Queries BigQuery for materialized mart tables and a small streaming staging table.
 """
 
 import time
@@ -144,9 +143,7 @@ def fetch_live_events(limit=MAX_LIVE_ROWS):
     return df
 
 
-# -----------------
 # UI
-# -----------------
 st.set_page_config(layout="wide", page_title="GA4 Attribution — RealTime")
 st.title("GA4 Real-Time Attribution Dashboard")
 
