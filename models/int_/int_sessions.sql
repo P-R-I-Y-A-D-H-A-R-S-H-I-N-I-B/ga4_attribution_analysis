@@ -1,3 +1,8 @@
+-- overview:
+
+-- This model sessionizes GA4 events by user and timestamp to identify user activity sequences.  
+-- It incrementally loads new events and assigns a unique session_id for each user-event combination.
+
 {{ config(materialized='incremental', unique_key='session_id') }}
 
 WITH sessionized AS (
@@ -8,7 +13,7 @@ WITH sessionized AS (
         traffic_medium,
         campaign,
         event_name,
-        -- Convert microseconds to actual TIMESTAMP
+        -- Convert microseconds to TIMESTAMP
         TIMESTAMP_MICROS(event_timestamp) AS event_ts,
         LEAD(event_timestamp) OVER (
             PARTITION BY COALESCE(user_id,user_pseudo_id) 

@@ -1,3 +1,8 @@
+-- overview:
+
+-- This model identifies the last-click attribution for each user.  
+-- It selects the latest event (like page_view or purchase) per user to capture the final traffic source and campaign before conversion.
+
 {{ config(materialized='table') }}
 
 WITH attribution AS (

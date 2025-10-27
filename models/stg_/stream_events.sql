@@ -1,3 +1,8 @@
+-- overview: 
+
+-- This model extracts and stages raw GA4 event data from BigQuery sample tables.  
+-- It incrementally loads new events based on the latest event_timestamp, ensuring no duplicates using event_id.
+
 {{ config(
     materialized='incremental',
     unique_key='event_id'

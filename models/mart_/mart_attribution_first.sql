@@ -1,3 +1,8 @@
+-- overview:
+
+-- This model identifies the first-click attribution for each user.  
+-- It selects the earliest event (like page_view or purchase) per user to capture the initial traffic source and campaign.
+
 {{ config(materialized='table') }}
 
 WITH attribution AS (

@@ -106,17 +106,14 @@ Replace `your_profile_name`, `your-gcp-project-id`, and `your_dbt_dataset` accor
 Run dbt models in stages to materialize the pipeline:
 
 ```bash
-# install dependencies declared in packages.yml (if present)
-dbt deps
-
 # run staging models
-dbt run --models stg_*
+dbt run --models models/stg_*
 
 # run intermediate models
-dbt run --models int_*
+dbt run --models models/int_*
 
 # run mart models (attribution)
-dbt run --models mart_*
+dbt run --models models/mart_*
 
 # run tests (optional)
 dbt test

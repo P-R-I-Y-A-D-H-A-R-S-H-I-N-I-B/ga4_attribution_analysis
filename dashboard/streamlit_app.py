@@ -1,8 +1,8 @@
-"""Streamlit dashboard for GA4 Click Attribution.
+"""
+Streamlit dashboard for GA4 Click Attribution.
 
-Displays first/last attribution totals, a time series, top channels, and
-recent streamed events. Queries BigQuery for materialized mart tables and
-a small streaming staging table.
+      Displays first/last attribution totals, a time series, top channels, and recent streamed events. 
+      Queries BigQuery for materialized mart tables and a small streaming staging table.
 """
 
 import time
@@ -40,8 +40,9 @@ def fetch_first_last_totals(days=14):
     date range with zero-filled days for missing data.
     """
     # start_date = (datetime.utcnow().date() - timedelta(days=days - 1)).isoformat()
-    # default demo start date (can be changed if needed)
-    start_date = '2021-01-27'
+    
+    # default demo start date 
+    start_date = '2021-01-17'
 
     q = f"""
       WITH first_attr AS (
@@ -84,7 +85,9 @@ def fetch_first_last_totals(days=14):
 def fetch_channel_breakdown(days=14, top_n=20):
     """Return top channels by first and last attribution in window."""
     # start_date = (datetime.utcnow().date() - timedelta(days=days - 1)).isoformat()
-    start_date = '2021-01-27'
+    
+    # default demo start date
+    start_date = '2021-01-17'
     q = f"""
     WITH first_top AS (
       SELECT 
