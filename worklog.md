@@ -10,3 +10,4 @@
 | 2025-10-26 | Developed Streamlit dashboard: First vs Last click totals, 14-day time series, channel breakdown, live event panel. |
 | 2025-10-27 | Initialized Git repository, pushed the local DBT project folder structure (`stg_`, `int_`, `mart_`) to public github repository.     |
 | 2025-10-27 | Polished README.md, requirements.txt, verified DBT tests, and tested end-to-end pipeline with streaming events. |
+| 2025-10-28 | Polished README.md, comment lines in models and stream files. |
